@@ -13,11 +13,9 @@ app.get("/", function (req, res) {
 });
 
 app.post("/", function (req, res) {
-  var firstName = req.body.fName;
-  var lastName = req.body.lName;
-  var email = req.body.email;
+  const { firstName, lastName, email } = req;
 
-  var data = {
+  const data = {
     members: [
       {
         email_address: email,
@@ -30,9 +28,9 @@ app.post("/", function (req, res) {
     ],
   };
 
-  var jsonData = JSON.stringify(data);
+  const jsonData = JSON.stringify(data);
 
-  var options = {
+  const options = {
     url: "https://usxx.api.mailchimp.com/3.0/lists/xxxxxx",
     method: "POST",
     headers: {
